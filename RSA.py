@@ -1,4 +1,5 @@
 import numbers
+
 def llave(p1,p2):
   #dos numeros primos
   p1=p1
@@ -10,10 +11,17 @@ def llave(p1,p2):
   #obtener mcd
   minc=mcd(p1-1,p2-1)
   #obtener el coprimo de minc. segundo valor el min. se obtiene el cercano
-  cop(minc,1)
-  print(1%780)
-  print(413*17)
+  publica=cop(minc,1)
+  privada=modmulinv(17,780)
 
+  return publica,privada,minc
+
+def modmulinv(num,modulus):
+  i=1
+  while (True):
+    if((num*i)%modulus==1):
+      return i
+    i+=1
 
 def mcd(num1,num2):
   if(num1>num2):
@@ -37,4 +45,14 @@ def cop(num,ini):
     i+=1
   return check
 
-llave(61,53)
+def procesar(num,llave,mod):
+  return (((num)**llave)%mod)
+
+def encriptar(num,llavePrivada,mod):
+  return (((num)**llavePrivada)%mod)
+
+def descrifrar(num,llavePublica,mod):
+  return(((num)**llavePublica)%mod)
+
+publica,privada,mod=llave(61,53)
+
