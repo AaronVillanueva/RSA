@@ -1,20 +1,28 @@
 import numbers
+import math
 
 def llave(p1,p2):
-  #dos numeros primos
-  p1=p1
-  p2=p2
-  
-  #multiplicar
   n=p1*p2
 
-  #obtener mcd
   minc=mcd(p1-1,p2-1)
-  #obtener el coprimo de minc. segundo valor el min. se obtiene el cercano
+
   publica=cop(minc,1)
   privada=modmulinv(17,780)
 
-  return publica,privada,minc
+  return publica,privada,n
+
+def llave2(p1,p2):
+  n=p1*p2
+  i=max(p1,p2)
+  n2=(p1-1)*(p2-1)
+  while (True):
+    if(math.gcd(i,n2)==1):
+      break
+    i+=1
+  print(i)
+  public=i
+  private=modmulinv(i,n2)
+  return public,private,n
 
 def modmulinv(num,modulus):
   i=1
@@ -54,5 +62,7 @@ def encriptar(num,llavePrivada,mod):
 def descrifrar(num,llavePublica,mod):
   return(((num)**llavePublica)%mod)
 
-publica,privada,mod=llave(61,53)
+
+#publica,privada,mod=llave(61,53)
+#publica,privada,mod=llave2(61,53)
 
