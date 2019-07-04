@@ -16,13 +16,13 @@ def llave(p1,p2):
 #Communications of the ACM. 21(2). 120-126
 def llave2(p1,p2):
   n=p1*p2
-  i=max(p1,p2)
+  i=max(p1,p2)+1
   n2=(p1-1)*(p2-1)
   while (True):
     if(math.gcd(i,n2)==1):
       break
     i+=1
-  print(i)
+  print("gcd=",i)
   public=i
   private=modmulinv(i,n2)
   return public,private,n
@@ -67,5 +67,8 @@ def descrifrar(num,llavePublica,mod):
 
 
 #publica,privada,mod=llave(61,53)
-#publica,privada,mod=llave2(61,53)
-
+publica,privada,mod=llave2(47,59)
+print("")
+print(publica)
+print(privada)
+print(mod)
