@@ -1,6 +1,7 @@
 import numbers
 import math
 
+#https://en.wikipedia.org/wiki/RSA_(cryptosystem)
 def llave(p1,p2):
   n=p1*p2
 
@@ -11,6 +12,8 @@ def llave(p1,p2):
 
   return publica,privada,n
 
+#Rivest R., Shamir A., Adleman L (1978). A Method for Obtaining Digital Signatures and Public-key Cryptosystems.
+#Communications of the ACM. 21(2). 120-126
 def llave2(p1,p2):
   n=p1*p2
   i=max(p1,p2)
