@@ -66,9 +66,15 @@ def descrifrar(num,llavePublica,mod):
   return(((num)**llavePublica)%mod)
 
 
-#publica,privada,mod=llave(61,53)
-publica,privada,mod=llave2(47,59)
-print("")
-print(publica)
-print(privada)
-print(mod)
+while True:
+  #publica,privada,mod=llave(61,53)
+  publica,privada,mod=llave2(47,59)
+  print("")
+  print("llave publica= ",publica)
+  print("llave privada= ",privada)
+  print("mod= ",mod)
+  txt=int(input("ingrese numero a encriptar"))
+  msj=encriptar(txt,privada,mod)
+  print(msj)
+  print(descrifrar(msj,publica,mod))
+  break
