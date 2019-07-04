@@ -1,5 +1,4 @@
-import numbers
-import math
+import numbers,random,math
 
 #https://en.wikipedia.org/wiki/RSA_(cryptosystem)
 def llave(p1,p2):
@@ -16,13 +15,12 @@ def llave(p1,p2):
 #Communications of the ACM. 21(2). 120-126
 def llave2(p1,p2):
   n=p1*p2
-  i=max(p1,p2)+1
+  i=max(p1,p2) + random.randint(0,n)
   n2=(p1-1)*(p2-1)
   while (True):
     if(math.gcd(i,n2)==1):
       break
     i+=1
-  print("gcd=",i)
   public=i
   private=modmulinv(i,n2)
   return public,private,n
@@ -68,13 +66,17 @@ def descrifrar(num,llavePublica,mod):
 
 while True:
   #publica,privada,mod=llave(61,53)
-  publica,privada,mod=llave2(47,59)
+  print("primos 47 y 59 para prueba rapida")
+  p1=int(input("Ingrese un numero primo "))
+  p2=int(input("Ingrese un segundo numero primo "))
+  publica,privada,mod=llave2(p1,p2)
   print("")
-  print("llave publica= ",publica)
-  print("llave privada= ",privada)
-  print("mod= ",mod)
-  txt=int(input("ingrese numero a encriptar"))
+  print("llave publica=",publica)
+  print("llave privada=",privada)
+  print("mod=",mod)
+  txt=int(input("ingrese numero a encriptar "))
   msj=encriptar(txt,privada,mod)
-  print(msj)
-  print(descrifrar(msj,publica,mod))
+  print("numero encriptado=",msj)
+  print("numero desencriptado=",descrifrar(msj,publica,mod))
+  input("ingrese un valor alfanumerico para continuar")
   break
